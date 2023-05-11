@@ -18,7 +18,6 @@ public class Main {
 		
 		
 		Libro[] libri = new Libro[valLng];
-		Libro l1 = null;
 		
 		for(int x = 0; x < libri.length; x++) {
 			
@@ -40,14 +39,12 @@ public class Main {
 			
 			//New Book
 			try {
-				 l1 = new Libro(titles, numberPages, author, publisher);
-				System.out.println(l1);	
+				Libro l1 = new Libro(titles, numberPages, author, publisher);	
+				libri[x]= l1;				
 			} catch (Exception e) {
 				
-				System.out.println("errore 1" + e.getMessage());
-				
+				System.err.println("errore 1" + e.getMessage());
 			}
-			libri[x]= l1;
 		}
 		sc.close();
 		
@@ -60,9 +57,9 @@ public class Main {
         	System.err.println("Errore nella lettura di Libri.txt\n" + e.getMessage());
         }	
 		
+		System.out.println("------------------------------------");
 		for(int x = 0; x < libri.length; x++) {
 			try {
-				System.out.println("------------------------------------");
 	            FileWriter myWriter = new FileWriter("C:\\Obsidian.java\\Nuova cartella\\Libri.txt", true);
 	            myWriter.write(libri[x].toString() + "\n\n");
 	    
